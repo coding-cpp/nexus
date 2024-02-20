@@ -8,6 +8,8 @@
 #include <thread>
 #include <vector>
 
+#include <logger/log.h>
+
 namespace nexus {
 
 class pool {

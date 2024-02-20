@@ -1,6 +1,5 @@
 #include <random>
 
-#include <logger/log.h>
 #include <nexus/pool.h>
 
 int main() {
