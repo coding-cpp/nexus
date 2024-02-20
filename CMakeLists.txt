@@ -16,6 +16,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 option(USE_INSTALL_RESOURCE_PATH "Set resource path to install location" OFF)
 
 add_executable(nexus
+  ./src/pool.cpp
+
   # Logger submodule
   ./lib/logger/src/config.cpp
   ./lib/logger/src/log.cpp
@@ -25,6 +27,8 @@ add_executable(nexus
 
 target_include_directories(nexus
   PUBLIC
+    $<INSTALL_INTERFACE:include>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:lib/logger/include>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/lib/logger/include>
 )
