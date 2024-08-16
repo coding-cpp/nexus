@@ -21,7 +21,7 @@ private:
   std::queue<std::function<void()>> tasks;
 
 public:
-  pool(size_t numThreads);
+  pool(size_t numThreads = std::thread::hardware_concurrency());
   ~pool();
 
   template <class F, class... Args>

@@ -11,7 +11,10 @@ void asyncFunction(int i) {
 }
 
 int main() {
-  nexus::pool pool(8);
+  // By default, nexus uses all available threads
+  // If you would prefer to use a specific number of threads, you can pass the
+  // number of threads to the pool constructor
+  nexus::pool pool;
 
   std::vector<std::future<std::string>> results;
 
