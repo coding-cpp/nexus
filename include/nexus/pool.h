@@ -25,9 +25,9 @@ public:
   ~pool();
 
   template <class F, class... Args>
-  std::future<typename std::result_of<F(Args...)>::type>
+  std::future<typename std::invoke_result<F, Args...>::type>
   enqueue(F &&f, Args &&...args) {
-    using return_type = typename std::result_of<F(Args...)>::type;
+    using return_type = typename std::invoke_result<F, Args...>::type;
     auto task = std::make_shared<std::packaged_task<return_type()>>(
         std::bind(std::forward<F>(f), std::forward<Args>(args)...));
     std::future<return_type> result = task->get_future();
