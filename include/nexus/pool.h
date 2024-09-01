@@ -26,7 +26,7 @@ public:
 
   template <class F, class... Args>
   std::future<typename std::invoke_result<F, Args...>::type>
-  enqueue(F &&f, Args &&...args) {
+  enqueue(F &&f, Args &&...args) noexcept(false) {
     using return_type = typename std::invoke_result<F, Args...>::type;
     std::shared_ptr<std::packaged_task<return_type()>> task =
         std::make_shared<std::packaged_task<return_type()>>(

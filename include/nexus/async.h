@@ -8,7 +8,8 @@
 
 namespace nexus {
 
-template <class F, class... Args> void async(F &&f, Args &&...args) {
+template <class F, class... Args>
+void async(F &&f, Args &&...args) noexcept(false) {
   try {
     std::thread(std::forward<F>(f), std::forward<Args>(args)...).detach();
   } catch (const std::exception &e) {
